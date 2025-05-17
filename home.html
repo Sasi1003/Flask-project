@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<div class="text-center mt-5">
+    <h1 class="text-success">Welcome to Namma Kadai</h1>
+    <p class="lead mt-3">Its initial cash balance is Rs. 1000.</p>
+    <h3>Current Amount: Rs. {{ current_amount }}</h3>
+
+    <p>Select an action below:</p>
+
+    <a href="/view-cart" class="btn btn-info m-2">View Cart</a>
+    <a href="/purchase" class="btn btn-success m-2">Purchase Page</a>
+    <a href="/sales" class="btn btn-warning m-2">Sales Page</a>
+</div>
+
+{% endblock %}

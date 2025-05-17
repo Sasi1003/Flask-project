@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Sales Page{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Sales Page</h2>
+
+    {% if items %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Rate (Rs.)</th>
+                <th>Total (Rs.)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.item }}</td>
+                <td>{{ item.qty }}</td>
+                <td>{{ item.rate }}</td>
+                <td>{{ item.total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-end">
+        <h4>Total Sales Amount: <strong>Rs.{{ total }}</strong></h4>
+    </div>
+    {% else %}
+    <p>No items selected for sale.</p>
+    {% endif %}
+    <div class="mt-3 d-flex gap-2">
+        <form method="GET" action="{{ url_for('views.view_cart') }}">
+            <button type="submit" class="btn btn-primary">Go to View Cart</button>
+        </form>
+        <form method="POST" action="{{ url_for('views.clear_cart_from_page', page='sales') }}">
+            <button type="submit" class="btn btn-danger">Clear Cart</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
